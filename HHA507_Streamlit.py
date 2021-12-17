@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 16 19:04:15 2021
-
-@author: ikima
-"""
+##Import needed packages
+import streamlit as st
+import pandas as pd
+import numpy as np
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+import time
 
 ##Streamlit section
 ## Load in the 3 primary csv files for display  
@@ -53,8 +55,4 @@ st.dataframe(outpatient_df)
 
 ##Create dataframe unique for Stony Brook University Hospital
 SBU = hospital_df[hospital_df['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
-st.header('This dataset shows information for Stony Brook University Hospital')
-##Merge datasets 
-hospital_df['provider_id'] = hospital_df['provider_id'].astype(str)
-inpatient_df['provider_id'] = inpatient_df['provider_id'].astype(str)
-outpatient_df['provider_id'] = outpatient_df['provider_id'].astype(str)
+st.markdown('This dataset shows information for Stony Brook University Hospital')
