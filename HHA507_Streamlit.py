@@ -33,7 +33,7 @@ st.write('2. What is the most expensive inpatient DRGs code for Stony Brook Univ
 st.write('3. What is the most expensive outpatient APCs code for Stony Brook University Hospital?')
 st.write('4. Where are hospitals in New York located?')
 st.write('5. What is the frequency for hospital type across the nation?')
-st.write('6. ')
+st.write('6. Which state has the most hospitals?')
 
 ##Load the datasets:     
 hospital_df = load_hospitals()
@@ -114,9 +114,17 @@ ny_locations['lat'] = pd.to_numeric(ny_locations['lat'])
 st.map(ny_locations)
 
 ##Question 5. Bar chart for hospital type in the U.S
-st.header('Q5. What is the frequency for hospital type across the nation?')
-st.subheader('Hospital Type - United States')
+st.header('Q5. What is the frequency for hospital types across the nation?')
+st.subheader('Hospital Types - United States')
 bar1 = hospital_df['hospital_type'].value_counts().reset_index()
 st.bar_chart(data=bar1, width=0, height=0, use_container_width=True)
 st.markdown('The majority of hospitals in the United States are acute care, followed by critical access')
 
+##Question 6. Bar chart for number of hospitals by state
+st.header('6. Which state has the most hospitals?')
+st.subheader('Number of Hospitals for each State')
+bar2 = hospital_df['state'].value_counts().reset_index()
+st.bar_chart(data=bar2, width=0, height=0, use_container_width=True)
+st.markdown('Texas has  followed 449 hospitals, which makes it the state with most hospitals, followed by California then Florida.'
+            
+st.title('Thanks for stopping by!')
