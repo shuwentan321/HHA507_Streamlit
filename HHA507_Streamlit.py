@@ -2,9 +2,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
 import time
 
 ##Streamlit section
@@ -55,4 +52,12 @@ st.dataframe(outpatient_df)
 
 ##Create dataframe unique for Stony Brook University Hospital
 SBU = hospital_df[hospital_df['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
+st.header('Info for Stony Brook University Hospital')
 st.markdown('This dataset shows information for Stony Brook University Hospital')
+st.dataframe(SBU)
+
+##Create dataframe unique for New York hospitals not including Stony Brook University Hospital
+NY = hospital_df[hospital_df['state'] == 'NY']
+st.header('Summary Info for Hospitals in New York')
+st.markdown('This dataset shows hospitals located in New York, filtered out from the main hospital dataframe, excluding SBU hospital')
+st.dataframe(NY)
