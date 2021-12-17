@@ -66,8 +66,8 @@ st.dataframe(NY)
 table1 = NY['hospital_overall_rating'].value_counts().reset_index()
 st.header('Q1. How does Stony Brook Univeristy Hospital compare to the rest of New York in overall rating?')
 st.subheader('Hospital rating for New York')
-st.markdown('From this table, we can determine that most hospitals in New York has a overall rating of 1, with 5 representing the highest rating.')
-st.markdown('To answer question 1, we know from the previous table that Stony Brook University Hospital has a overall rating of 4, thus Stony Brook University has a higher overall rating than most hospitals within New York. ')
+st.markdown('From this table, we can determine that most hospitals in New York has an overall rating of 1, with 5 representing the highest rating.')
+st.markdown('To answer question 1, we know from the previous table that Stony Brook University Hospital has an overall rating of 4, thus Stony Brook University has a higher overall rating than most hospitals within New York. ')
 st.dataframe(table1)
 
 ##Create dataframe unique for Stony Brook University Hospital Inpatient info for question 2
