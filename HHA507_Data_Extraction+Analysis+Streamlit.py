@@ -118,7 +118,7 @@ SBU_outpatient_info
 
 ##Save the cleaned dataframes for visualizations
 
-##Create a datafraome unique for New York hospitals
+##Create a dataframe unique for New York hospitals
 NY_hospitals = df_hospital_2[df_hospital_2['state'] == 'NY']
 ##Set the index of the dtaframe to hospital name
 NY_hospitals_2 = NY_hospitals.set_index('hospital_name')
@@ -127,13 +127,9 @@ NY_hospitals_2.head()
 ##Exclude Stony Brook University Hospital for comparison by name
 NY_hospitals_2 = NY_hospitals_2.drop('SUNY/STONY BROOK UNIVERSITY HOSPITAL')
 
-table1 = NY_hospitals_2hospital_overall_rating'].value_counts().reset_index()
-st.header('Hospital rating for New York')
-st.dataframe(table1)
-
 ##Question 1. How does Stony Brook Univeristy Hospital compare to the rest of New York in overall rating?
-##What is the most expensive inpatient DRGs code for Stony Brook University?
-##What is the most expensive outpatient APCs code for Stony Brook University?
+##What is the most expensive inpatient DRGs code for Stony Brook University Hospital?
+##What is the most expensive outpatient APCs code for Stony Brook University Hospital?
 
 ##Streamlit section
 ## Load in the 3 primary csv files for display  
@@ -156,8 +152,44 @@ def load_outpatient():
 #     time.sleep(0.1)
 #     my_bar.progress(percent_complete + 1)
 
+st.title('HHA 507 - Final Assignment')
+st.write('Shuwen Tan :sunglasses:') 
+st.write('This answers the following questions:')
+st.write('1. How does Stony Brook Univeristy Hospital compare to the rest of New York in overall rating?')
+st.write('2. What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
+st.write('3. What is the most expensive outpatient APCs code for Stony Brook University Hospital?')
+st.write('4. ')
+st.write('5. ')
+st.write('6. ')
+
 ##Load the datasets:     
 hospital_df = load_hospitals()
 inpatient_df = load_inatpatient()
 outpatient_df = load_outpatient()
 
+##Preview the datasets
+st.header('Hospital Data Preview')
+st.dataframe(hospital_df)
+
+st.header('Outpatient Data Preview')
+st.dataframe(inpatient_df)
+
+st.header('Inpatient Data Preview')
+st.dataframe(outpatient_df)
+
+##Create dataframe unique for Stony Brook University Hospital
+SBU = hospital_df[hospital_df['hospital_name'] == 'SUNY/STONY BROOK UNIVERSITY HOSPITAL']
+st.header('This dataset shows information for Stony Brook University Hospital')
+##Merge datasets 
+hospital_df['provider_id'] = hospital_df['provider_id'].astype(str)
+inpatient_df['provider_id'] = inpatient_df['provider_id'].astype(str)
+outpatient_df['provider_id'] = outpatient_df['provider_id'].astype(str)
+
+st.header()
+inpatient_hospital = df_inpatient_2.merge(df_hospital_2, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
+inpatient_hospital.head()
+
+##Merge the cleaned outpatient dataframe with cleaned hospital dtaframe
+outpatient_hospital = df_outpatient_2.merge(df_hospital_2, how = 'left', left_on = 'provider_id', right_on = 'provider_id')
+outpatient_hospital.head()
+outpatient_hospital.head()
