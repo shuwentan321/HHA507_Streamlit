@@ -32,7 +32,7 @@ st.write('1. How does Stony Brook Univeristy Hospital compare to the rest of New
 st.write('2. What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
 st.write('3. What is the most expensive outpatient APCs code for Stony Brook University Hospital?')
 st.write('4. Where are hospitals in New York located?')
-st.write('5. ')
+st.write('5. What is the frequency for hospital type across the nation?')
 st.write('6. ')
 
 ##Load the datasets:     
@@ -112,3 +112,11 @@ ny_locations['lon'] = pd.to_numeric(ny_locations['lon'])
 ny_locations['lat'] = pd.to_numeric(ny_locations['lat'])
 
 st.map(ny_locations)
+
+##Question 5. Bar chart for hospital type in the U.S
+st.header('Q5. What is the frequency for hospital type across the nation?')
+st.subheader('Hospital Type - United States')
+bar1 = hospital_df['hospital_type'].value_counts().reset_index()
+st.dataframe(bar1)
+st.markdown('The majority of hospitals in the United States are acute care, followed by critical access')
+
