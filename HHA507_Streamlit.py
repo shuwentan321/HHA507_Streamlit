@@ -5,7 +5,7 @@ import numpy as np
 import time
 
 ##Streamlit section
-## Load in the 3 primary csv files for display  
+##Load in the 3 primary csv files for display  
 @st.cache
 def load_hospitals():
    hospital_df = pd.read_csv('https://raw.githubusercontent.com/hantswilliams/AHI_DataSci_507/main/Deployment_Streamlit/hospital_info.csv')
@@ -27,11 +27,11 @@ def load_outpatient():
 
 st.title('HHA 507 - Final Assignment')
 st.write('Shuwen Tan :sunglasses:') 
-st.write('This answers the following questions:')
+st.write('This app answers the following questions:')
 st.write('1. How does Stony Brook Univeristy Hospital compare to the rest of New York in overall rating?')
 st.write('2. What is the most expensive inpatient DRGs code for Stony Brook University Hospital?')
 st.write('3. What is the most expensive outpatient APCs code for Stony Brook University Hospital?')
-st.write('4. ')
+st.write('4. Where are hospitals in New York located?')
 st.write('5. ')
 st.write('6. ')
 
@@ -101,3 +101,14 @@ st.markdown('APCs is ambulatory payment classsifications, a classification syste
 st.markdown('With information listed on this table, we can determine that the most expensive outpatient APCs code for Stony Brook Univeristy Hospital is 0074, with an average total payments of $2,307.21')
 st.markdown('0074 - Level IV Endoscopy Upper Airway')
 st.dataframe(SBU_outpatient_DRGs_desc)
+
+##Question 4. Map for NY hospitals
+st.header('Q4. Where are hospitals in New York located?')
+st.subheader('Map of New York Hospitals')
+ny_locations = NY['location'].str.strip('()').str.split(' ', expand=True).rename(columns={0: 'Point', 1:'lon', 2:'lat'}) 	
+ny_locations['lon'] = ny_locations['lon'].str.strip('(')
+ny_locations = ny_locations.dropna()
+ny_locations['lon'] = pd.to_numeric(ny_locations['lon'])
+ny_locations['lat'] = pd.to_numeric(ny_locations['lat'])
+
+st.map(ny_locations)
