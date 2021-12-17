@@ -265,3 +265,6 @@ st.bar_chart(data=bar2, width=0, height=0, use_container_width=True)
 st.markdown('Texas has 449 hospitals, which makes it the state with the most hospitals, followed by California')
 
 st.title('Thank you for stopping by!')
+
+##Link for streamlit:
+##https://share.streamlit.io/shuwentan321/hha507_streamlit/main/HHA507_Streamlit.py
