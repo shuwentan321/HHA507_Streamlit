@@ -117,6 +117,6 @@ st.map(ny_locations)
 st.header('Q5. What is the frequency for hospital type across the nation?')
 st.subheader('Hospital Type - United States')
 bar1 = hospital_df['hospital_type'].value_counts().reset_index()
-st.dataframe(bar1)
+st.bar_chart(data=bar1, width=0, height=0, use_container_width=True)
 st.markdown('The majority of hospitals in the United States are acute care, followed by critical access')
 
